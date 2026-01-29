@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MNIST Digit Recognition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="title">
+      <h1>MNIST Digit Recognition</h1>
+      <p class="bottom-text">Made by <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a></p>
+    </div>
+    <p class="bottom-text">Click and drag to draw a digit</p>
+    <canvas
+      id="canvas"
+      width="28"
+      height="28"
+      style="width: 560px; height: 560px"
+    ></canvas>
+    <div id="prediction-toolbox">
+      <button onclick="clearCanvas()">Clear Canvas</button>
+      <h3 id="result">Prediction: ?</h3>
+    </div>
+
+    <a
+      href="https://github.com/aneshodza/mnist-digit-recognition"
+      target="_blank"
+      id="git-tag"
+    >
+      <img height="25px" src="./github.svg" alt="GitHub tag" />
+      <span>Find this on GitHub</span>
+    </a>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  background: white;
+  border: 2px solid black;
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+button {
+  font-family: "Montserrat", sans-serif !important;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#git-tag {
+  position: absolute;
+  bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.bottom-text {
+  font-size: 14px;
+  margin: 2px;
+  color: #999;
+}
+
+#prediction-toolbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 564px;
+  margin-top: 16px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+h1 {
+  margin: 0;
+}
