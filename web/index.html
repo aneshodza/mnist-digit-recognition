@@ -14,29 +14,31 @@
     <link rel="icon" href="./favicon.png" />
   </head>
   <body>
-    <div class="prediction-panel">
-      <div class="title">
-        <h1>MNIST Digit Recognition</h1>
-        <p class="bottom-text">
-          Made by
-          <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a>
-        </p>
-      </div>
-      <p id="instruction-text" class="bottom-text">
-        Click and drag to draw a digit
+    <div class="title">
+      <h1>MNIST Digit Recognition</h1>
+      <p class="bottom-text">
+        Made by
+        <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a>
       </p>
-      <canvas id="canvas" width="28" height="28"></canvas>
-      <p id="bar-notes" class="bottom-text">
-        Watch on larger screen to get prediction bars
-      </p>
-      <div id="prediction-toolbox">
-        <button onclick="clearCanvas()">Clear Canvas</button>
-        <h3 id="result">Prediction: ?</h3>
-      </div>
     </div>
-    <div class="prediction-bars" id="prediction-bars">
-      <h2>Confidence</h2>
-      <!-- Prediction bars will be dynamically added here -->
+    <div class="main-content">
+      <div class="prediction-panel">
+        <p id="instruction-text" class="bottom-text">
+          Click and drag to draw a digit
+        </p>
+        <canvas id="canvas" width="28" height="28"></canvas>
+        <p id="bar-notes" class="bottom-text">
+          Watch on larger screen to get prediction bars
+        </p>
+        <div id="prediction-toolbox">
+          <button onclick="clearCanvas()">Clear Canvas</button>
+          <h3 id="result">Prediction: ?</h3>
+        </div>
+      </div>
+      <div class="prediction-bars" id="prediction-bars">
+        <h2>Confidence</h2>
+        <!-- Prediction bars will be dynamically added here -->
+      </div>
     </div>
 
     <a
