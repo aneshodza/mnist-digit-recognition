@@ -1,5 +1,5 @@
 import { NeuralNetwork, ActivationFunctions, OutputFunctions } from './network.js';
-import { setupCanvas, getCenteredData } from './ui.js';
+import { setupCanvas, getCenteredData, updateInstructions } from './ui.js';
 
 let nn = null;
 const canvas = document.getElementById("canvas");
@@ -22,6 +22,7 @@ async function predict() {
 }
 
 async function init() {
+  updateInstructions();
   try {
     const response = await fetch("model.json");
     const json = await response.text();

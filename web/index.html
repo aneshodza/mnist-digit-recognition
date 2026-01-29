@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MNIST Digit Recognition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,12 +18,11 @@
       <h1>MNIST Digit Recognition</h1>
       <p class="bottom-text">Made by <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a></p>
     </div>
-    <p class="bottom-text">Click and drag to draw a digit</p>
+    <p id="instruction-text" class="bottom-text">Click and drag to draw a digit</p>
     <canvas
       id="canvas"
       width="28"
       height="28"
-      style="width: 560px; height: 560px"
     ></canvas>
     <div id="prediction-toolbox">
       <button onclick="clearCanvas()">Clear Canvas</button>
