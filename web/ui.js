@@ -4,10 +4,8 @@ export function setupCanvas(canvasId, onDrawEnd) {
   let isDrawing = false;
   const brushRadius = 1.0;
 
-  // Helper to get coordinates from either Mouse or Touch events
   const getCoords = (e) => {
     const rect = canvas.getBoundingClientRect();
-    // Use touch if available, otherwise use clientX/Y
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
@@ -20,6 +18,7 @@ export function setupCanvas(canvasId, onDrawEnd) {
   const startDrawing = () => {
     isDrawing = true;
   };
+
   const stopDrawing = () => {
     if (isDrawing) {
       isDrawing = false;
@@ -30,7 +29,6 @@ export function setupCanvas(canvasId, onDrawEnd) {
   const draw = (e) => {
     if (!isDrawing) return;
 
-    // Prevent scrolling on mobile while drawing
     if (e.touches) e.preventDefault();
 
     const { x, y } = getCoords(e);
@@ -38,23 +36,22 @@ export function setupCanvas(canvasId, onDrawEnd) {
     ctx.beginPath();
     ctx.arc(x, y, brushRadius, 0, Math.PI * 2);
     ctx.fill();
+
+    onDrawEnd();
   };
 
-  // Mouse Listeners
   canvas.addEventListener("mousedown", startDrawing);
   window.addEventListener("mouseup", stopDrawing);
   canvas.addEventListener("mousemove", draw);
 
-  // Touch Listeners for Phones/Tablets
   canvas.addEventListener(
     "touchstart",
     (e) => {
-      e.preventDefault(); // Stop screen bounce/scroll
+      e.preventDefault();
       startDrawing();
-      // Optional: Draw a dot immediately on touch
       draw(e);
     },
-    { passive: false },
+    { passive: false }
   );
 
   canvas.addEventListener(
@@ -63,7 +60,7 @@ export function setupCanvas(canvasId, onDrawEnd) {
       e.preventDefault();
       stopDrawing();
     },
-    { passive: false },
+    { passive: false }
   );
 
   canvas.addEventListener("touchmove", draw, { passive: false });
@@ -114,9 +111,9 @@ export function getCenteredData(ctx, canvas) {
 
 export function updateInstructions() {
   const instructionEl = document.getElementById("instruction-text");
-  
-  // Check if the device supports touch
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
   if (isTouchDevice) {
     instructionEl.innerText = "Touch and drag to draw a digit";
