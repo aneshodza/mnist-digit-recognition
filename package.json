@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "out/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && node out/main.js"
   },
-  "keywords": [],
+  "keywords": ["mnist", "ai", "image-classification"],
   "author": "Anes Hodza",
   "license": "ISC",
   "type": "module",
-  "description": "",
+  "description": "This project is a library-free neural network built from scratch to recognize handwritten digits from the MNIST dataset. It includes a Node.js training engine and a web interface for real-time, centered digit prediction using vanilla JavaScript and TypeScript.",
   "devDependencies": {
     "@types/node": "^25.0.10",
     "ts-node": "^10.9.2",
