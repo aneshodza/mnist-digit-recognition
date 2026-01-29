@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MNIST Digit Recognition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,19 +14,28 @@
     <link rel="icon" href="./favicon.png" />
   </head>
   <body>
-    <div class="title">
-      <h1>MNIST Digit Recognition</h1>
-      <p class="bottom-text">Made by <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a></p>
+    <div class="prediction-panel">
+      <div class="title">
+        <h1>MNIST Digit Recognition</h1>
+        <p class="bottom-text">
+          Made by
+          <a target="_blank" href="https://www.aneshodza.ch/">Anes Hodza</a>
+        </p>
+      </div>
+      <p id="instruction-text" class="bottom-text">
+        Click and drag to draw a digit
+      </p>
+      <canvas id="canvas" width="28" height="28"></canvas>
+      <p id="bar-notes" class="bottom-text">
+        Watch on larger screen to get prediction bars
+      </p>
+      <div id="prediction-toolbox">
+        <button onclick="clearCanvas()">Clear Canvas</button>
+        <h3 id="result">Prediction: ?</h3>
+      </div>
     </div>
-    <p id="instruction-text" class="bottom-text">Click and drag to draw a digit</p>
-    <canvas
-      id="canvas"
-      width="28"
-      height="28"
-    ></canvas>
-    <div id="prediction-toolbox">
-      <button onclick="clearCanvas()">Clear Canvas</button>
-      <h3 id="result">Prediction: ?</h3>
+    <div class="prediction-bars" id="prediction-bars">
+      <!-- Prediction bars will be dynamically added here -->
     </div>
 
     <a

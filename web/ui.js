@@ -121,3 +121,38 @@ export function updateInstructions() {
     instructionEl.innerText = "Click and drag to draw a digit";
   }
 }
+
+export function initBars() {
+  const barsContainer = document.getElementById("prediction-bars");
+
+  for (let i = 0; i < 10; i++) {
+    const barWrapper = document.createElement("div");
+    barWrapper.className = "bar-container";
+    const label = document.createElement("span");
+    label.className = "bar-label";
+    label.innerText = i;
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.id = `bar-${i}`;
+    const percentage = document.createElement("span");
+    percentage.className = "bar-percentage";
+    percentage.id = `percentage-${i}`;
+    percentage.innerText = "0%";
+
+    barWrapper.appendChild(label);
+    barWrapper.appendChild(bar);
+    barWrapper.appendChild(percentage);
+    barsContainer.appendChild(barWrapper);
+  }
+}
+
+export function updateBars(predictions) {
+  for (let i = 0; i < predictions.length; i++) {
+    const bar = document.getElementById(`bar-${i}`);
+    const percentage = document.getElementById(`percentage-${i}`);
+    const value = (predictions[i] * 100).toFixed(2);
+    bar.style.width = `${value}%`;
+    percentage.innerText = `${value}%`;
+  }
+}
+
