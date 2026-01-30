@@ -11,9 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build and Move Files
+        run: |
+          npm install
+          npm run build
+          
+          mkdir -p ./web/out
+          cp out/neural_network.js ./web/out
+          cp out/functions.js ./web/out
+
+          sed -i '/import fs from "fs";/d' ./web/out/neural_network.js
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './web'
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4

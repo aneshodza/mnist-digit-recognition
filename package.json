@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "out/main.js",
   "scripts": {
-    "start": "tsc && node out/main.js"
+    "start": "tsc && node out/main.js",
+    "build": "tsc"
   },
   "keywords": ["mnist", "ai", "image-classification"],
   "author": "Anes Hodza",

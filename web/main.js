@@ -1,4 +1,5 @@
-import { NeuralNetwork, ActivationFunctions, OutputFunctions } from './network.js';
+import { NeuralNetwork } from './out/neural_network.js';
+import { ActivationFunctions, OutputFunctions } from './out/functions.js'
 import { setupCanvas, getCenteredData, updateInstructions, initBars, updateBars } from './ui.js';
 
 let nn = null;
@@ -29,7 +30,8 @@ async function init() {
   try {
     const response = await fetch("model.json");
     const json = await response.text();
-    nn = new NeuralNetwork(json, { ActivationFunctions, OutputFunctions });
+    // nn = new NeuralNetwork(json, { ActivationFunctions, OutputFunctions });
+    nn = NeuralNetwork.fromJSON(json);
   } catch (e) {
     console.error("Failed to load model", e);
   }

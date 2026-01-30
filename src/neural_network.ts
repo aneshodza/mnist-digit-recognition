@@ -82,8 +82,9 @@ class NeuralNetwork {
       const { signal, z, layer } = data;
 
       const localDeltas: Vector = new Float32Array(deltas.length);
+      const backwards = layer.activationFunction.backward(z);
       for (let i = 0; i < deltas.length; i++) {
-        localDeltas[i] = deltas[i]! * layer.activationFunction.backward(z)[i]!;
+        localDeltas[i] = deltas[i]! * backwards[i]!;
       }
 
       const nextDeltas: Vector = new Float32Array(signal.length);
@@ -179,6 +180,36 @@ class NeuralNetwork {
     } catch (err) {
       console.error("Failed to save the model:", err);
     }
+  }
+
+  static fromJSON(jsonString: string): NeuralNetwork {
+    const data = JSON.parse(jsonString);
+
+    const outputFn =
+      OutputFunctions[data.outputName as keyof typeof OutputFunctions];
+    if (!outputFn)
+      throw new Error(`Output function ${data.outputName} not found`);
+
+    const nn = new NeuralNetwork(outputFn);
+
+    nn.layers = data.layers.map((layerData: any, i: number) => {
+      const weights = layerData.weights.map(
+        (row: number[]) => new Float32Array(row),
+      );
+      const biases = new Float32Array(layerData.biases);
+
+      const actName = data.activationNames[
+        i
+      ] as keyof typeof ActivationFunctions;
+      const activation = ActivationFunctions[actName];
+
+      if (!activation)
+        throw new Error(`Activation function ${actName} not found`);
+
+      return new Layer(weights, biases, activation);
+    });
+
+    return nn;
   }
 }
 
